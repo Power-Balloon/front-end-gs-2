@@ -6,43 +6,114 @@ import fotoBruno from '../../img/bruno.jpg';
 
 const SobreNosPage: React.FC = () => {
     return (
-        <div className="sobre-nos-container">
-            <div className="sobre-nos-content"></div>
-            <h1>Sobre Nós</h1>
-            <h2>Bem-vindo à PowerBalloon</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet iusto minima odit, voluptatem cum amet ab, blanditiis adipisci consectetur reprehenderit a, explicabo pariatur facere eligendi in nisi magni deserunt.
-            </p>
-            <div className="min-h-screen flex flex-col items-start justify-start bg-black p-4">
-                <div className="bg-slate-400 shadow-md rounded p-6 max-w-md w-full text-center">
-                    <h1 className="text-3xl font-bold mb-4">Criadores</h1>
-                    <div className="mb-4 flex flex-col items-start">
-                        <Image src={fotoNicolas} alt="Criador 1" width={150} height={150} className="rounded-full mb-2"/>
-                        <p className="font-semibold">Nome: Nicolas Guinante</p>
-                        <p>RM: 557844</p>
-                        <p>Turma: 1TDSPO</p>
-                        <a href="https://www.linkedin.com/in/nicolas-guinante-036407309/">Linkedin</a>
-                        <a href="https://github.com/NicolasGCADS">Github</a>
+        <div className="bg-gray-900 text-white min-h-screen">
+            <div className="container mx-auto px-4 py-8">
+                <h1 className="text-4xl font-bold text-center mb-6">Sobre Nós</h1>
+                <h2 className="text-2xl font-medium text-center text-gray-400 mb-8">
+                    Bem-vindo à PowerBalloon
+                </h2>
+                <p className="text-lg text-center text-gray-300 mb-12">
+                    Somos um grupo de entusiastas da tecnologia, com a missão de revolucionar a forma como a energia solar
+                    é gerada, aproveitando o potencial dos balões estratosféricos. Abaixo, você pode conhecer os criadores
+                    do PowerBalloon.
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-8">
+                    <div className="bg-gray-800 rounded-lg shadow-lg p-6 w-72 text-center">
+                        <Image
+                            src={fotoNicolas}
+                            alt="Criador 1"
+                            width={150}
+                            height={150}
+                            className="rounded-full mx-auto mb-4"
+                        />
+                        <h3 className="text-xl font-semibold mb-2">Nicolas Guinante</h3>
+                        <p className="text-sm text-gray-400 mb-2">RM: 557844</p>
+                        <p className="text-sm text-gray-400 mb-4">Turma: 1TDSPO</p>
+                        <div className="flex justify-center gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/nicolas-guinante-036407309/"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                LinkedIn
+                            </a>
+                            <a
+                                href="https://github.com/NicolasGCADS"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                GitHub
+                            </a>
+                        </div>
                     </div>
-                    <div className="mb-4 flex flex-col items-start">
-                        <Image src={fotoCaio} alt="Criador 2" width={150} height={150} className="rounded-full mb-2"/>
-                        <p className="font-semibold">Nome: Caio Nyimi</p>
-                        <p>RM: 556331</p>
-                        <p>Turma: 1TDSPO</p>
-                        <a href="https://www.linkedin.com/in/caio-cesar-rosa-nyimi-2588a32b6">Linkedin</a>
-                        <a href="https://github.com/CaiocrNyimi">Github</a>
+
+                    <div className="bg-gray-800 rounded-lg shadow-lg p-6 w-72 text-center">
+                        <Image
+                            src={fotoCaio}
+                            alt="Criador 2"
+                            width={150}
+                            height={150}
+                            className="rounded-full mx-auto mb-4"
+                        />
+                        <h3 className="text-xl font-semibold mb-2">Caio Nyimi</h3>
+                        <p className="text-sm text-gray-400 mb-2">RM: 556331</p>
+                        <p className="text-sm text-gray-400 mb-4">Turma: 1TDSPO</p>
+                        <div className="flex justify-center gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/caio-cesar-rosa-nyimi-2588a32b6"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                LinkedIn
+                            </a>
+                            <a
+                                href="https://github.com/CaiocrNyimi"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                GitHub
+                            </a>
+                        </div>
                     </div>
-                    <div className="mb-4 flex flex-col items-start">
-                        <Image src={fotoBruno} alt="Criador 3" width={150} height={150} className="rounded-full mb-2"/>
-                        <p className="font-semibold">Nome: Bruno Centurion</p>
-                        <p>RM: 556531</p>
-                        <p>Turma: 1TDSPO</p>
-                        <a href="https://br.linkedin.com/in/bruno-centurion-3804a8301">Linkedin</a>
-                        <a href="https://github.com/brunocenturion">Github</a>
+
+                    <div className="bg-gray-800 rounded-lg shadow-lg p-6 w-72 text-center">
+                        <Image
+                            src={fotoBruno}
+                            alt="Criador 3"
+                            width={150}
+                            height={150}
+                            className="rounded-full mx-auto mb-4"
+                        />
+                        <h3 className="text-xl font-semibold mb-2">Bruno Centurion</h3>
+                        <p className="text-sm text-gray-400 mb-2">RM: 556531</p>
+                        <p className="text-sm text-gray-400 mb-4">Turma: 1TDSPO</p>
+                        <div className="flex justify-center gap-4">
+                            <a
+                                href="https://br.linkedin.com/in/bruno-centurion-3804a8301"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                LinkedIn
+                            </a>
+                            <a
+                                href="https://github.com/brunocenturion"
+                                className="text-blue-500 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     );
 };
 
