@@ -8,7 +8,7 @@ const Planos: React.FC = () => {
                     <div className="card-title bg-indigo-700 p-6 text-center">
                         <h2 className="text-3xl font-semibold">Basic</h2>
                         <p className="text-xl mt-2">
-                            <i className="fa fa-rupee"></i> R$ 99, 00/mês
+                            <i className="fa fa-rupee"></i> R$ 99,00/mês
                         </p>
                     </div>
                     <div className="card-content p-6">

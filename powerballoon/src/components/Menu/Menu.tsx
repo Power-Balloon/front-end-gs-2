@@ -15,6 +15,9 @@ export default function Menu() {
           <Link href="/funcionalidades" className="hover:text-light-blue">Funcionalidades</Link>
         </li>
         <li>
+          <Link href="/listar-baloes" className="hover:text-light-blue">Baloes</Link>
+        </li>
+        <li>
           <Link href="/sobre-nos" className="hover:text-light-blue">Sobre Nós</Link>
         </li>
       </ul>
