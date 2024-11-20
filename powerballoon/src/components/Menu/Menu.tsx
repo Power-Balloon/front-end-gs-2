@@ -17,6 +17,7 @@ export default function Menu() {
         <li>
           <Link href="/listar-baloes" className="hover:text-light-blue">Baloes</Link>
         </li>
+          <Link href="/listar-empresas" className="hover:text-light-blue">Empresas</Link>
         <li>
           <Link href="/sobre-nos" className="hover:text-light-blue">Sobre Nós</Link>
         </li>

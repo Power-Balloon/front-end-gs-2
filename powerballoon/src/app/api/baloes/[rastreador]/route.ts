@@ -62,7 +62,7 @@ export async function PUT(req: NextRequest, { params }: { params: { rastreador: 
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { rastreador: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: { rastreador: number } }) {
   try {
     console.log(`Deleting vehicle with placa ${params.rastreador} from API...`);
     const response = await fetch(`${API_URL}/${params.rastreador}`, {
