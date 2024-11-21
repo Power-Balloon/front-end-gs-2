@@ -18,16 +18,16 @@ export async function GET() {
       }
     });
     if (!response.ok) {
-      throw new Error('Erro ao buscar veículos');
+      throw new Error('Erro ao buscar empresa');
     }
     const empresa = (await response.json()) as Empresa[];
     return NextResponse.json(empresa, { status: 200 });
   } catch (error) {
     const errorMessage =
-    error instanceof Error ? error.message : 'Erro desconhecido ao criar balão';
-    console.error('Erro ao criar balão:', errorMessage);
+    error instanceof Error ? error.message : 'Erro desconhecido ao criar empresa';
+    console.error('Erro ao criar empresa:', errorMessage);
     
-    return NextResponse.json({ error : 'Erro ao buscar balão' }, { status: 500 });
+    return NextResponse.json({ error : 'Erro ao buscar empresa' }, { status: 500 });
   }
 }
 

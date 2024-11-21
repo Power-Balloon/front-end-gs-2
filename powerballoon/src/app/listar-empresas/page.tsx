@@ -2,21 +2,22 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner/Spinner";
-
+import Link from "next/link";
+ 
 interface Empresa {
     cnpj: number;
-    nome: string;
-    cep: number;
-    plano: string;
+    nomEmpre: string;
+    cepEmpre: number;
+    planoEmpre: string;
 }
-
+ 
 const ListarEmpresasPage: React.FC = () => {
     const [empresas, setEmpresas] = useState<Empresa[]>([]);
     const [carregando, setCarregando] = useState<boolean>(true);
     const [erro, setErro] = useState<string>('');
     const [cnpjBusca, setCnpjBusca] = useState<string>('');
     const router = useRouter();
-
+ 
     useEffect(() => {
         const fetchEmpresa = async (): Promise<void> => {
             try {
@@ -34,13 +35,13 @@ const ListarEmpresasPage: React.FC = () => {
                 setCarregando(false);
             }
         };
-
+ 
         fetchEmpresa();
     }, []);
-
+ 
     const handleDelete = async (cnpj: number): Promise<void> => {
         if (!confirm("Tem certeza que deseja excluir esta empresa?")) return;
-    
+   
         try {
             const response = await fetch(`/api/empresas/${cnpj}`, {
                 method: 'DELETE',
@@ -48,10 +49,10 @@ const ListarEmpresasPage: React.FC = () => {
                     'Content-Type': 'application/json',
                 },
             });
-    
+   
             if (response.status === 204) {
                 setEmpresas(empresas.filter(empresa => empresa.cnpj !== cnpj));
-                alert('Empresa excluído com sucesso!');
+                alert('Empresa excluída com sucesso!');
             } else {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Erro desconhecido ao excluir Empresa');
@@ -59,26 +60,26 @@ const ListarEmpresasPage: React.FC = () => {
         } catch (error: unknown) {
             const errorMessage =
                 error instanceof Error ? error.message : 'Erro desconhecido ao excluir Empresa';
-    
+   
             console.error('Erro ao excluir Empresa:', errorMessage);
             setErro(`Erro ao excluir Empresa: ${errorMessage}`);
         }
     };
-    
-
+ 
     const handleEdit = (cnpj: number): void => {
         router.push(`/atualizar-empresa?cnpj=${cnpj}`);
     };
-
+ 
     const filteredEmpresas: Empresa[] = empresas.filter(empresa => typeof empresa.cnpj === 'number' && !isNaN(empresa.cnpj));
-    
+   
     return (
         <div className="listar-empresas-container">
             <main className="w-full">
                 <h1 className="listar-titulo">Listagem de Empresas</h1>
                 {erro && <p className="text-blue-500">{erro}</p>}
-                <input type="text"
-                    placeholder="Buscar por cnpj da empresa"
+                <input
+                    type="text"
+                    placeholder="Buscar por CNPJ da empresa"
                     value={cnpjBusca}
                     onChange={(e) => setCnpjBusca(e.target.value)}
                     className="mb-4 p-2 border border-gray-300 rounded"
@@ -90,9 +91,9 @@ const ListarEmpresasPage: React.FC = () => {
                         <table className="Empresas-tabela">
                             <thead>
                                 <tr>
-                                    <th className="px-4 py-2">Cnpj</th>
+                                    <th className="px-4 py-2">CNPJ</th>
                                     <th className="px-4 py-2">Nome</th>
-                                    <th className="px-4 py-2">Cep</th>
+                                    <th className="px-4 py-2">CEP</th>
                                     <th className="px-4 py-2">Plano</th>
                                 </tr>
                             </thead>
@@ -101,9 +102,9 @@ const ListarEmpresasPage: React.FC = () => {
                                     filteredEmpresas.map(empresa => (
                                         <tr key={empresa.cnpj}>
                                             <td className="border px-4 py-2">{empresa.cnpj}</td>
-                                            <td className="border px-4 py-2">{empresa.nome}</td>
-                                            <td className="border px-4 py-2">{empresa.cep}</td>
-                                            <td className="border px-4 py-2">{empresa.plano}</td>
+                                            <td className="border px-4 py-2">{empresa.nomEmpre}</td>
+                                            <td className="border px-4 py-2">{empresa.cepEmpre}</td>
+                                            <td className="border px-4 py-2">{empresa.planoEmpre}</td>
                                             <td className="border px-4 py-2">
                                                 <button onClick={() => handleEdit(empresa.cnpj)} className="bg-blue-700 text-white px-3 py-1 rounded">
                                                     Editar
@@ -116,7 +117,9 @@ const ListarEmpresasPage: React.FC = () => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={10} className="text-center">Nenhum balão encontrado.</td>
+                                        <td colSpan={10} className="text-center">Nenhuma empresa encontrada.</td>
+                                        <Link href="/cadastrar-empresas" className="hover:text-green-400">Cadastre sua Empresa!!</Link>
+                                        <Link href="/atualizar-empresas" className="hover:text-blue-600">Atualize aqui!</Link>
                                     </tr>
                                 )}
                             </tbody>
@@ -127,5 +130,6 @@ const ListarEmpresasPage: React.FC = () => {
         </div>
     );
 };
-
+ 
 export default ListarEmpresasPage;
+ 
