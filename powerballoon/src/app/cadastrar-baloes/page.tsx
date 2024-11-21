@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 
-const CadastrarEmpresaPage: React.FC = () => {
+const CadastrarBalaoPage: React.FC = () => {
+    const [gas, setGas] = useState('');
+    const [matBalao, setMatBalao] = useState('');
+    const [caboBalao, setCaboBalao] = useState('');
+    const [rastreadorBalao, setRastreadorBalao] = useState(0)
     const [cnpj, setCnpj] = useState(0);
-    const [nomEmpre, setNomEmpre] = useState('');
-    const [cepEmpre, setCepEmpre] = useState(0);
-    const [planoEmpre, setPlanoEmpre] = useState('');
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState('');
 
@@ -15,21 +16,22 @@ const CadastrarEmpresaPage: React.FC = () => {
         setCarregando(true);
         setErro('');
 
-        const empresa = {
-        cnpj,
-        nomEmpre,
-        cepEmpre,
-        planoEmpre
+        const balao = {
+        gas,
+        matBalao,
+        caboBalao,
+        rastreadorBalao,
+        cnpj
         };
 
         try {
-            console.log('Enviando empresa:', empresa);
-            const response = await fetch('/api/empresa', {
+            console.log('Enviando balão:', balao);
+            const response = await fetch('/api/baloes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(empresa)
+                body: JSON.stringify(balao)
             });
 
             if (!response.ok) {
@@ -38,7 +40,7 @@ const CadastrarEmpresaPage: React.FC = () => {
                 return;
             }
 
-            alert('Empresa cadastrado com sucesso!');
+            alert('Balão cadastrado com sucesso!');
         } catch (error: unknown) {
             const errorMessage =
                 error instanceof Error ? error.message : 'Ocorreu um erro desconhecido';
@@ -52,30 +54,30 @@ const CadastrarEmpresaPage: React.FC = () => {
     return (
         <div className="content-wrap">
             <main>
-                <h1 className="text-3xl font-bold mb-8">Cadastro de Empresa</h1>
+                <h1 className="text-3xl font-bold mb-8">Cadastro de Balão</h1>
                 {erro && <p className="text-red-500">{erro}</p>}
-                <form onSubmit={handleSubmit} className="cadastro-veiculo-form">
+                <form onSubmit={handleSubmit} className="cadastro-balao-form">
+                <label>
+                        Gás:
+                        <input type="text" value={gas} onChange={(e) => setGas(e.target.value)} required />
+                    </label>
+                    <label>
+                        Material:
+                        <input type="text" value={matBalao} onChange={(e) => setMatBalao(e.target.value)} required />
+                    </label>
+                    <label>
+                        Cabo:
+                        <input type="text" value={caboBalao} onChange={(e) => setCaboBalao(e.target.value)} required />
+                    </label>
+                    <label>
+                        Rastreador do Balão:
+                        <input type="number" value={cnpj} onChange={(e) => setRastreadorBalao(parseInt(e.target.value))} required />
+                    </label>
                     <label>
                         CNPJ:
                         <input type="number" value={cnpj} onChange={(e) => setCnpj(parseInt(e.target.value))} required />
                     </label>
-                    <label>
-                        Nome da Empresa:
-                        <input type="text" value={nomEmpre} onChange={(e) => setNomEmpre(e.target.value)} required />
-                    </label>
-                    <label>
-                        Cep:
-                        <input type="number" value={cepEmpre} onChange={(e) => setCepEmpre(parseInt(e.target.value))} required />
-                    </label>
-                    <label>
-                        Plano da Empresa:
-                        <input type="text" value={planoEmpre} onChange={(e) => setPlanoEmpre(e.target.value)} required />
-                    </label>
-                    <label>
-                        CNPJ:
-                        <input type="number" value={cnpj} onChange={(e) => setCnpj(parseInt(e.target.value))} required />
-                    </label>
-                    <button type="submit">Cadastrar Empresa</button>
+                    <button type="submit">Cadastrar Balão</button>
                 </form>
                 {carregando && <Spinner />}
             </main>
@@ -83,4 +85,4 @@ const CadastrarEmpresaPage: React.FC = () => {
     );
 };
 
-export default CadastrarEmpresaPage;
+export default CadastrarBalaoPage;
