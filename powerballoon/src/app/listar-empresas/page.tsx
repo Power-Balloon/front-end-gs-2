@@ -75,14 +75,14 @@ const ListarEmpresasPage: React.FC = () => {
     return (
         <div className="listar-empresas-container">
             <main className="w-full">
-                <h1 className="listar-titulo">Listagem de Empresas</h1>
-                {erro && <p className="text-blue-500">{erro}</p>}
+                <h1 className="listar-titulo text-3xl font-bold">Listagem de Empresas</h1>
+                {erro && <p className="text-blue-500 text-2xl mb-4">{erro}</p>}
                 <input
                     type="text"
                     placeholder="Buscar por CNPJ da empresa"
                     value={cnpjBusca}
                     onChange={(e) => setCnpjBusca(e.target.value)}
-                    className="mb-4 p-2 border border-gray-300 rounded"
+                    className="mb-4 p-2 w-80 border-gray-300 rounded "
                 />
                 {carregando ? (
                     <Spinner/>
@@ -90,11 +90,11 @@ const ListarEmpresasPage: React.FC = () => {
                     <div className="overflow-x-auto w-full">
                         <table className="Empresas-tabela">
                             <thead>
-                                <tr>
-                                    <th className="px-4 py-2">CNPJ</th>
-                                    <th className="px-4 py-2">Nome</th>
-                                    <th className="px-4 py-2">CEP</th>
-                                    <th className="px-4 py-2">Plano</th>
+                                <tr className="table-auto">
+                                    <th className="px-8 py-2">CNPJ</th>
+                                    <th className="px-8 py-2">Nome</th>
+                                    <th className="px-8 py-2">CEP</th>
+                                    <th className="px-8 py-2">Plano</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,9 +117,8 @@ const ListarEmpresasPage: React.FC = () => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={10} className="text-center">Nenhuma empresa encontrada.</td>
-                                        <Link href="/cadastrar-empresas" className="hover:text-green-400">Cadastre sua Empresa!!</Link>
-                                        <Link href="/atualizar-empresas" className="hover:text-blue-600">Atualize aqui!</Link>
+                                        <td colSpan={10} className="text-center space-x-10 space-y-10">Nenhuma empresa encontrada.</td>
+                                        <Link href="/cadastrar-empresas" className="py-2 px-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700">Cadastre sua Empresa</Link>
                                     </tr>
                                 )}
                             </tbody>

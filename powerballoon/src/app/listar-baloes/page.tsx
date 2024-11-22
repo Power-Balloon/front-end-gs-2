@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner/Spinner";
+import Link from "next/link";
  
 interface Balao {
     gas: string;
@@ -75,14 +76,14 @@ const ListarBaloesPage: React.FC = () => {
     return (
         <div className="listar-baloes-container">
             <main className="w-full">
-                <h1 className="listar-titulo">Listagem de Balões</h1>
-                {erro && <p className="text-blue-500">{erro}</p>}
+                <h1 className="listar-titulo text-3xl font-bold">Listagem de Balões</h1>
+                {erro && <p className="text-blue-500 text-2xl mb-4">{erro}</p>}
                 <input
                     type="text"
-                    placeholder="Buscar por rastreadorBalao do balão"
+                    placeholder="Buscar por Rastreador do balão"
                     value={rastreadorBusca}
                     onChange={(e) => setRastreadorBusca(e.target.value)}
-                    className="mb-4 p-2 border border-gray-300 rounded"
+                    className="mb-4 p-2 w-80 border-gray-300 rounded"
                 />
                 {carregando ? (
                     <Spinner/>
@@ -91,11 +92,11 @@ const ListarBaloesPage: React.FC = () => {
                         <table className="baloes-tabela">
                             <thead>
                                 <tr>
-                                    <th className="px-4 py-2">Gás</th>
-                                    <th className="px-4 py-2">Material</th>
-                                    <th className="px-4 py-2">Cabo</th>
-                                    <th className="px-4 py-2">Rastreador</th>
-                                    <th className="px-4 py-2">CNPJ</th>
+                                    <th className="px-8 py-2">Gás</th>
+                                    <th className="px-8 py-2">Material</th>
+                                    <th className="px-8 py-2">Cabo</th>
+                                    <th className="px-8 py-2">Rastreador</th>
+                                    <th className="px-8 py-2">CNPJ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -119,7 +120,8 @@ const ListarBaloesPage: React.FC = () => {
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={6} className="text-center">Nenhum balão encontrado.</td>
+                                        <td colSpan={6} className="text-center space-x-10 space-y-10">Nenhum balão encontrado.</td>
+                                        <Link href="/cadastrar-baloes" className="py-2 px-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700">Cadastre seu Balão</Link>
                                     </tr>
                                 )}
                             </tbody>

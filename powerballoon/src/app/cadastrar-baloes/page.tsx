@@ -52,32 +52,32 @@ const CadastrarBalaoPage: React.FC = () => {
         }};
 
     return (
-        <div className="content-wrap">
+        <div className="bg-gray-500 p-10 max-w-max text-center bg-opacity-80 text-black flex flex-col items-center justify-center gap-4 mt-4">
             <main>
-                <h1 className="text-3xl font-bold mb-8">Cadastro de Balão</h1>
+                <h1 className="text-3xl font-bold mb-5">Cadastro de Balão</h1>
                 {erro && <p className="text-red-500">{erro}</p>}
                 <form onSubmit={handleSubmit} className="cadastro-balao-form">
-                <label>
+                <label className='block mb-4 text-left w-full'>
                         Gás:
-                        <input type="text" value={gas} onChange={(e) => setGas(e.target.value)} required />
+                        <input className='w-full p-2 mt-2 border' type="text" value={gas} onChange={(e) => setGas(e.target.value)} required />
                     </label>
-                    <label>
+                    <label className='block mb-4 text-left w-full'>
                         Material:
-                        <input type="text" value={matBalao} onChange={(e) => setMatBalao(e.target.value)} required />
+                        <input className='w-full p-2 mt-2 border' type="text" value={matBalao} onChange={(e) => setMatBalao(e.target.value)} required />
                     </label>
-                    <label>
+                    <label className='block mb-4 text-left w-full'>
                         Cabo:
-                        <input type="text" value={caboBalao} onChange={(e) => setCaboBalao(e.target.value)} required />
+                        <input className='w-full p-2 mt-2 border' type="text" value={caboBalao} onChange={(e) => setCaboBalao(e.target.value)} required />
                     </label>
-                    <label>
+                    <label className='block mb-4 text-left w-full'>
                         Rastreador do Balão:
-                        <input type="number" value={cnpj} onChange={(e) => setRastreadorBalao(parseInt(e.target.value))} required />
+                        <input className='w-full p-2 mt-2 border' type="number" value={cnpj} onChange={(e) => setRastreadorBalao(parseInt(e.target.value))} required />
                     </label>
-                    <label>
+                    <label className='block mb-4 text-left w-full'>
                         CNPJ:
-                        <input type="number" value={cnpj} onChange={(e) => setCnpj(parseInt(e.target.value))} required />
+                        <input className='w-full p-2 mt-2 border' type="number" value={cnpj} onChange={(e) => setCnpj(parseInt(e.target.value))} required />
                     </label>
-                    <button type="submit">Cadastrar Balão</button>
+                    <button className="py-2 px-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700" type="submit">Cadastrar Balão</button>
                 </form>
                 {carregando && <Spinner />}
             </main>

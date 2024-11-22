@@ -89,14 +89,14 @@ const AtualizarBalaoPage: React.FC = () => {
   }
 
   return (
-    <div className="content-wrap">
+    <div className="bg-gray-500 p-10 max-w-max text-center bg-opacity-80 text-black flex flex-col items-center justify-center gap-4 mt-4">
       <main>
-        <h1 className="text-3xl font-bold mb-8">Atualizar Balão</h1>
+        <h1 className="text-3xl font-bold mb-5">Atualizar Balão</h1>
         {erro && <p className="text-red-500">{erro}</p>}
         <form onSubmit={handleSubmit} className="cadastro-balao-form">
-          <label>
+          <label className='block mb-4 text-left w-full'>
             Gás:
-            <input
+            <input className='w-full p-2 mt-2 border'
               type="text"
               value={balao.gas || ""}
               name="gas"
@@ -104,9 +104,9 @@ const AtualizarBalaoPage: React.FC = () => {
               required
             />
           </label>
-          <label>
+          <label className='block mb-4 text-left w-full'>
             Material do Balão:
-            <input
+            <input className='w-full p-2 mt-2 border'
               type="text"
               value={balao.matBalao || ""}
               name="matBalao"
@@ -114,9 +114,9 @@ const AtualizarBalaoPage: React.FC = () => {
               required
             />
           </label>
-          <label>
+          <label className='block mb-4 text-left w-full'>
             Cabo do Balão:
-            <input
+            <input className='w-full p-2 mt-2 border'
               type="text"
               value={balao.caboBalao || ""}
               name="caboBalao"
@@ -124,9 +124,9 @@ const AtualizarBalaoPage: React.FC = () => {
               required
             />
           </label>
-          <label>
+          <label className='block mb-4 text-left w-full'>
             Rastreador do Balão:
-            <input
+            <input className='w-full p-2 mt-2 border'
               type="number"
               value={balao.rastreadorBalao || ""}
               name="rastreadorBalao"
@@ -134,9 +134,9 @@ const AtualizarBalaoPage: React.FC = () => {
               required
             />
           </label>
-          <label>
+          <label className='block mb-4 text-left w-full'>
             CNPJ:
-            <input
+            <input className='w-full p-2 mt-2 border'
               type="number"
               value={balao.cnpj || ""}
               name="cnpj"
@@ -145,7 +145,7 @@ const AtualizarBalaoPage: React.FC = () => {
               readOnly
             />
           </label>
-          <button type="submit">Atualizar Balão</button>
+          <button className="py-2 px-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700" type="submit">Atualizar Balão</button>
         </form>
       </main>
     </div>
