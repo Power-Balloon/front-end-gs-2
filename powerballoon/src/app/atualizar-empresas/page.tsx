@@ -79,7 +79,7 @@ const AtualizarEmpresaPage: React.FC = () => {
     const { name, value } = e.target;
     setEmpresa((prevEmpresa) => ({
       ...prevEmpresa,
-      [name]: name === "planoEmpre" ? parseInt(value) : value, // Converte "planoEmpre" para número
+      [name]: name === "planoEmpre" ? parseInt(value) : value,
     }));
   };
 

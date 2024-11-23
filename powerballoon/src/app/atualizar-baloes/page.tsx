@@ -80,7 +80,7 @@ const AtualizarBalaoPage: React.FC = () => {
     const { name, value } = e.target;
     setBalao((prevBalao) => ({
       ...prevBalao,
-      [name]: name === "rastreadorBalao" || name === "cnpj" ? parseInt(value) : value, // Converte rastreadorBalao e cnpj para número
+      [name]: name === "rastreadorBalao" || name === "cnpj" ? parseInt(value) : value,
     }));
   };
 
